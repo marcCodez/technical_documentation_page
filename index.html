@@ -3,47 +3,136 @@
 	<head></head>
 	<body>
 		<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
-<nav id="navbar">
-	<header>
-
-	</header>
-	<a href="" class="nav-link"></a>
-	<a href="" class="nav-link"></a>
-	<a href="" class="nav-link"></a>
-	<a href="" class="nav-link"></a>
-	<a href="" class="nav-link"></a>
-</nav>
-
 
 		<main id="main-doc">
-			<section class="main-section" id="">
-				<h1>sss</h1>
-				<p></p>
-				<p></p>
+			<nav id="navbar">
+				<header>
+					JavaScript Understanding the Weird Parts - Anthony Alicea
+				</header>
+				<a href="#IIFEs" class="nav-link">IIFEs</a>
+				<a href="#JSON_and_Object_Literals" class="nav-link"
+					>JSON and Object Literals</a
+				>
+				<a href="#Closures" class="nav-link">Closures</a>
+				<a href="#Constructors" class="nav-link">Constructors</a>
+				<a href="#Function_Constructors_and_.prototype" class="nav-link"
+					>Function Constructors and .prototype</a
+				>
+			</nav>
+			<section class="main-section" id="IIFEs">
+				<header>IIFEs</header>
+				<p>
+					Invoking or running a function expression immediately after it has
+					been created. A function without imediately invoking it will just
+					return the function.
+				</p>
+				<p>
+					Since creating anonymous functions on the fly wont work, we can use a
+					function expression in parentheses (), so that the JavaSript engine
+					can understands. “I don’t mean this to be my kind of normal function
+					statement, I mean this to be an expression, something that’s created
+					on the fly" (Tricks the Syntax Parser) 
+					<ul>
+						<li>
+							You’ll see this style in almost
+							every framework and library today.
+						</li>
+					</ul>
+					
+				</p>
 				<code></code>
 			</section>
-			<section class="main-section">
-				<h1>gfhf</h1>
-				<p></p>
-				<p></p>
+			<section class="main-section" id="JSON_and_Object_Literals">
+				<header>JSON and Object Literals</header>
+				<p>
+					JSON which stands for JavaScript Object Notation, is inspired by
+					object literal syntax In JavaScript and looks an awful lot like it but
+					they are not the SAME! In previous years data was sent over the
+					internet in a different format, the one landed upon for a while was
+					XML. But the problem is there is a lot of unnecessary characters that
+					make the amount of data that you’re sending larger. Sending one piece
+					of data, would be sending the property name twice (WASTE OF
+					BANDWIDTH).
+				</p>
+				<p>
+					So people were like what if we sent data in JSON format, now a days we
+					pretty much just use JSON to send data. It's just a string of data but
+					it looks like object literal syntax. Difference is that Properties
+					must be wrapped with “” quotes, it doesn't let you put functions as
+					values of a property. JSON isn’t really part of JavaScript, but
+					because its so popular and so easy for JS to understand it, JS has
+					some built in functionality to transfer data between the two. 
+					<ul>
+						<li>
+							JSON.stringify(-object name-) will convert the object to a JSON string
+						</li>
+						<li>
+							JSON.parse(-string here-) will convert a string to a JS object
+						</li>
+					</ul>
+					
+					
+				</p>
 				<code></code>
 			</section>
-			<section class="main-section">
-				<h1>fghgf</h1>
-				<p></p>
-				<p></p>
+			<section class="main-section" id="Closures">
+				<header>Closures</header>
+				<p>
+					When the var sayHi line is executed, it creates an execution context
+					for the greet() function and after it's completed, it will pop out of
+					the execution stack but the variable that we passed ‘Hi’ remains in
+					memory. Even though the greet function ended, any function will still
+					have access to that greet functions memory space.
+				</p>
+				<p>
+					Thus the sayHi(‘Tony’) can go down the scope chain and check the value
+					for whattosay since it could find it in its own execution context And
+					so this phenomenon of it closing in all the variables that it’s
+					supposed to have access to, is called a CLOSURE. 
+					<ul>
+						<li>
+							Closures are simply a
+							feature of the JS language, we didn’t really create it rather JS did
+							it for us.
+						</li>
+					</ul>
+				
+				</p>
 				<code></code>
 			</section>
-			<section class="main-section">
-				<h1>fghf</h1>
-				<p></p>
-				<p></p>
+			<section class="main-section" id="Constructors">
+				<header>Constructors</header>
+				<p>
+					Function Constructors- A normal function that is used to construct
+					objects - The ‘this’ variable points a new empty object, and that
+					object is returned from the function automatically So what we’re doing
+					we’re simply utilizing features in the JavaScript language that lets
+					us construct or build objects. ‘new’ is actually an operator. So we
+					created a new object using ‘new’, then called the Person() function
+					with the ‘this’ variable pointing to that empty object And whatever I
+					do using the this variable will end up being part of that new object,
+					this is letting me construct an object via a function
+				</p>
+				<p>
+					The Important thing is that the ‘new’ keyword sets the ‘this’ keyword
+					to a brand new empty object, and if you don’t return anything from
+					that function, instead of returning undefined it will return that
+					empty object, but now worked on by you perhaps inside that function
+					using the this keyword. If we want to make it for different and more
+					people, we add the parameters, so this.firstname sets the property for
+					the empty object and = firstname is the parameter we passed in
+				</p>
 				<code></code>
-			</section>ssssss
-			<section class="main-section">
-				<h1>hfghf</hs1>
-				<p></p>
-				<p></p>
+			</section>
+			<section class="main-section" id="Function_Constructors_and_.prototype">
+				<header>Function Constructors and .prototype</header>
+				<p>Every function has a prototype property (think of it as a recipe for objects stored in the __proto__)!
+					<ul>
+						<li>It is only used by the ‘new’ operator.</li>
+					</ul>
+					From an efficiency standpoint its better to put your methods in a prototype because they only need one copy to be used (Saves memory space)
+					</p>
+				<p>But we can keep those properties for each object in person like the firstname and lastname properties because it is going to have different values per object, but for methods I only need one! </p>
 				<code></code>
 			</section>
 		</main>
