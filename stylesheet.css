@@ -1,0 +1,65 @@
+* {
+	background-color: #a1c4e6;
+}
+
+div.main-body {
+	display: grid;
+	grid-template-columns: minmax(270px, auto) 1fr; /*!minmax will be our nav bar column, whereas 1fr will be the rest of the content!!-The minmax CSS function defines a size >= to min and <= to max, auto is the max value which Represents the largest max-content contribution of the grid items occupying the grid track.
+    min-content. Grid also introduces an additional length unit to help us create flexible grid tracks(simply the space between 2 lines). The new fr unit represents a fraction of the available space in the grid container */
+	grid-template-areas: "menu content"; /* labels each grid area, so the 2 columns */
+	grid-gap: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#topheader {
+	font-weight: bold;
+	color: black;
+}
+nav#navbar {
+	/* first columns given to the navbar made in html */
+	grid-area: menu;
+	position: fixed;
+}
+
+nav#navbar a {
+	display: block;
+	border: 1px solid black;
+	padding: 20px 0px;
+	text-align: center;
+	margin: 10px 0;
+	text-decoration: none;
+	color: white;
+	background-color: #082b4d;
+}
+
+main#main-doc {
+	grid-area: content;
+	color: black;
+}
+
+section.main-section header {
+	font-size: 1.5em;
+	/* 	Relative to the font-size of the element (2em means 2 times the size of the current font)
+    Practical in creating perfectly scalable layout! */
+	font-weight: bold;
+	color: #082b4d;
+	padding-top: 15px;
+}
+
+code {
+	background-color: #aaabb8;
+	display: block;
+	padding: 10px;
+	color: black;
+}
+
+@media screen and (max-width: 750px) {
+	/* so if its ever below 750px run this code */
+	div.main-body {
+		grid-template-columns: 1fr; /*remember we used this ealier, it represents a fraction of tha avilable space. In this case it will span the whole column */
+		grid-template-areas: "menu" "mainContent";
+	}
+	nav#navbar {
+		position: inherit;
+	}
+}

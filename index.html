@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html>
-	<head></head>
+	<head>
+		<link rel="stylesheet" type="text/css" href="stylesheet.css">
+	</head>
 	<body>
+		<div class="main-body">
 		<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
 
+		<nav id="navbar">
+			<header id="topheader">
+				JS Understanding the Weird Parts
+			</header>
+			<a href="#IIFEs" class="nav-link">IIFEs</a>
+			<a href="#JSON_and_Object_Literals" class="nav-link"
+				>JSON and Object Literals</a
+			>
+			<a href="#Closures" class="nav-link">Closures</a>
+			<a href="#Constructors" class="nav-link">Constructors</a>
+			<a href="#Function_Constructors_and_.prototype" class="nav-link"
+				>Function Constructors and .prototype</a
+			>
+		</nav>
 		<main id="main-doc">
-			<nav id="navbar">
-				<header>
-					JavaScript Understanding the Weird Parts - Anthony Alicea
-				</header>
-				<a href="#IIFEs" class="nav-link">IIFEs</a>
-				<a href="#JSON_and_Object_Literals" class="nav-link"
-					>JSON and Object Literals</a
-				>
-				<a href="#Closures" class="nav-link">Closures</a>
-				<a href="#Constructors" class="nav-link">Constructors</a>
-				<a href="#Function_Constructors_and_.prototype" class="nav-link"
-					>Function Constructors and .prototype</a
-				>
-			</nav>
+			
 			<section class="main-section" id="IIFEs">
 				<header>IIFEs</header>
 				<p>
@@ -40,7 +44,15 @@
 					</ul>
 					
 				</p>
-				<code></code>
+				<code>
+					var firstname = 'Marc';
+
+					(function(name)) {
+					var greeting = 'Inside IIFE: Hello';
+					console.log(greeting + ' ' + name);
+
+					}(firstname));
+				</code>
 			</section>
 			<section class="main-section" id="JSON_and_Object_Literals">
 				<header>JSON and Object Literals</header>
@@ -73,7 +85,17 @@
 					
 					
 				</p>
-				<code></code>
+				<code>
+					var objectLiteral = {
+						firstName: 'Marc',
+						isAProgrammer: true
+					}
+					console.log(JSON.stringify(objectLiteral));
+
+					var jsonValue = JSON.parse('{ "firstname": "Mary", "isAPRogrammer": true }');
+
+					console.log(jsonValue);
+				</code>
 			</section>
 			<section class="main-section" id="Closures">
 				<header>Closures</header>
@@ -98,7 +120,14 @@
 					</ul>
 				
 				</p>
-				<code></code>
+				<code>function greet(whattosay) {
+					return function(name) {
+						console.log(whattosay + ' ' + name);
+					}
+					}
+				var sayHi = greet('Hi');
+				sayHi('Tony');
+				</code>
 			</section>
 			<section class="main-section" id="Constructors">
 				<header>Constructors</header>
@@ -122,7 +151,22 @@
 					people, we add the parameters, so this.firstname sets the property for
 					the empty object and = firstname is the parameter we passed in
 				</p>
-				<code></code>
+				<code>
+					function Person(firstname, lastname) {
+ 
+						console.log(this);
+						this.firstname = firstname;
+						this.lastname = lastname;
+						console.log('This function is invoked.');
+						
+					}
+					
+					var john = new Person('John', 'Doe');
+					console.log(john);
+					
+					var jane = new Person('Jane', 'Doe');
+					console.log(jane);
+				</code>
 			</section>
 			<section class="main-section" id="Function_Constructors_and_.prototype">
 				<header>Function Constructors and .prototype</header>
@@ -133,9 +177,34 @@
 					From an efficiency standpoint its better to put your methods in a prototype because they only need one copy to be used (Saves memory space)
 					</p>
 				<p>But we can keep those properties for each object in person like the firstname and lastname properties because it is going to have different values per object, but for methods I only need one! </p>
-				<code></code>
+				<code>
+					function Person(firstname, lastname) {
+ 
+						console.log(this);
+						this.firstname = firstname;
+						this.lastname = lastname;
+						console.log('This function is invoked.');
+						
+					}
+					
+					Person.prototype.getFullName = function() {
+						return this.firstname + ' ' + this.lastname;   
+					}
+					
+					var john = new Person('John', 'Doe');
+					console.log(john);
+					
+					var jane = new Person('Jane', 'Doe');
+					console.log(jane);
+					
+					Person.prototype.getFormalFullName = function() {
+						return this.lastname + ', ' + this.firstname;   
+					}
+					
+					console.log(john.getFormalFullName());
+				</code>
 			</section>
 		</main>
+	</div>
 	</body>
-	<html></html>
 </html>
